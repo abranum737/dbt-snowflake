@@ -1,0 +1,32 @@
+version: 2
+
+models:
+    - name: stg__customers
+      description: one unique customer per line
+      columns: 
+      - name: customer_id
+        description: primary key
+        data_tests:
+          - unique
+          - not_null
+
+    - name: stg__orders
+      description: one order per line
+      columns:
+      - name: order_id
+        description: primary key
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        data_tests:
+          - accepted_values:
+              values:
+                - O
+                - F
+                - P
+      - name: customer_id
+        data_tests:
+          - relationships:
+              to: ref('stg__customers')
+              field: customer_id

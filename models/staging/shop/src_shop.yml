@@ -12,6 +12,11 @@ sources:
     tables:
       - name: customer
         freshness: null
+        columns:
+          - name: c_custkey
+            tests:
+              - unique
+              - not_null
       - name: orders
       - name: region
         freshness: null
