@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: dbt_annie
+    database: analytics
+    schema: dbt_annie
+    freshness:
+          warn_after: {count: 2, period: day}
+          error_after: {count: 48, period: hour}
+    loaded_at_field: o_order_timestamp
+
+    tables:
+      - name: customer
+        freshness: null
+      - name: orders
+      - name: region
+        freshness: null
+      - name: nation
+        freshness: null

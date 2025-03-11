@@ -5,4 +5,4 @@ select
     o_orderpriority as status,
     o_totalprice as price
 
-from dbt_annie.orders
+from {{ source('dbt_annie', 'orders') }}

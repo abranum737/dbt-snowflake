@@ -3,4 +3,4 @@ select
     c_name as first_name,
     c_acctbal as account_balance
 
-from dbt_annie.customer
+from {{ source('dbt_annie', 'customer') }}
